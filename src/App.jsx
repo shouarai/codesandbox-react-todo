@@ -1,34 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.css";
 
 export const App = () => {
+  //incompleteTodos変数　　setIncompleteTOdos関数
+  const [incompleteTodos, setIncompleteTOdos] = useState([
+    "ああああ",
+    "いいいいい"
+  ]);
+
+  const [comleteTodos, setCompleteTodos] = useState(["うううう"]);
+
   return (
     <>
-      <div>
+      <div className="input-area">
         <input placeholder=" TODOを入力" />
         <button>追加</button>
       </div>
-      <div>
-        <p>未完了のTODO</p>
+      <div className="imcomplete-area">
+        <p className="title">未完了のTODO</p>
         <ul>
-          <div>
-            <li>ああああ</li>
-            <button>完了</button>
-            <button>削除</button>
-          </div>
-          <div>
-            <li>いいいい</li>
-            <button>完了</button>
-            <button>削除</button>
-          </div>
+          {incompleteTodos.map((todo) => {
+            return (
+              <div key={todo} className="list-row">
+                <li>{todo}</li>
+                <button>完了</button>
+                <button>削除</button>
+              </div>
+            );
+          })}
         </ul>
+      </div>
 
-        <p>完了のTODO</p>
+      <div className="complete-area">
+        <p className="title">完了のTODO</p>
         <ul>
-          <div>
-            <li>うううう</li>
-            <button>戻す</button>
-          </div>
+          {comleteTodos.map((todo) => {
+            return (
+              <div className="list-row">
+                <li>{todo}</li>
+                <button>戻す</button>
+              </div>
+            );
+          })}
         </ul>
       </div>
     </>
